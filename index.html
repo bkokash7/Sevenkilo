@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Seven Kilo Enterprises LLC</title>
+<meta name="description" content="Seven Kilo Enterprises LLC — App development, apparel, property services, and consulting. Multiple ventures, one vision."/>
+<meta name="theme-color" content="#ffffff"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
+<style>
+
+/* ── TOKENS ─────────────────────────────────── */
+:root {
+  --bg:       #FFFFFF;
+  --bg2:      #F9F7F4;
+  --bg3:      #F2EFE9;
+  --dark:     #111110;
+  --card:     #FFFFFF;
+  --border:   #E6E2DA;
+  --gold:     #B8963E;
+  --gold-bg:  rgba(184,150,62,0.09);
+  --text:     #1A1916;
+  --t2:       #4C4840;
+  --t3:       #8A8680;
+  --t4:       #C4BFB5;
+  --r:        14px;
+  --nav-h:    64px;
+}
+
+/* ── RESET ──────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ── NAV ────────────────────────────────────── */
+.nav-wrap {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  height: var(--nav-h);
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: auto;
+}
+.nav-wrap.nav-hidden {
+  transform: translateY(-100%);
+}
+.nav-wrap nav {
+  width: 100%; height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+}
+.nav-logo {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text); cursor: pointer; user-select: none;
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.nav-logo-mark {
+  width: 26px; height: 26px;
+  background: var(--dark); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.04em; flex-shrink: 0;
+}
+.nav-links { display: none; list-style: none; align-items: center; gap: 2px; }
+.nav-links a {
+  font-size: 13px; font-weight: 400; color: var(--t3);
+  padding: 6px 11px; border-radius: 8px; cursor: pointer;
+  transition: color 0.14s, background 0.14s; white-space: nowrap;
+}
+.nav-links a:hover  { color: var(--text); background: var(--bg2); }
+.nav-links a.active { color: var(--text); font-weight: 500; }
+.ham {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 8px;
+}
+.ham span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--t2); border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity: 0; }
+.ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mob-menu {
+  display: none;
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 9998;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 6px 0 16px;
+}
+.mob-menu.open { display: block; }
+.mob-menu a {
+  display: block; padding: 14px 32px;
+  font-size: 15px; color: var(--t2); cursor: pointer;
+  transition: color 0.14s;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.mob-menu a:last-child { border-bottom: none; }
+.mob-menu a:hover, .mob-menu a.active { color: var(--text); }
+
+@media (min-width: 900px) {
+  .nav-links { display: flex; }
+  .ham        { display: none; }
+}
+
+/* ── PAGE SYSTEM ────────────────────────────── */
+.page { display: none; position: relative; z-index: 0; }
+.page.active { display: block; }
+
+/* ── LAYOUT ─────────────────────────────────── */
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 480px) { .wrap { padding: 0 20px; } }
+
+.lbl {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── BUTTONS ────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--dark); color: #fff; border: none;
+  padding: 13px 26px; border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  transition: opacity 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+.btn:hover { opacity: 0.82; transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--t2);
+}
+.btn-outline:hover { background: var(--bg2); opacity: 1; transform: translateY(-1px); }
+.btn-gold {
+  background: var(--gold); color: #fff;
+}
+.btn-gold:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* ── SECTION HEAD ───────────────────────────── */
+.sec-head { margin-bottom: 40px; }
+.sec-head .lbl { display: block; margin-bottom: 10px; }
+.sec-head h2 {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark);
+}
+.sec-head p { font-size: 15px; color: var(--t3); margin-top: 10px; line-height: 1.75; max-width: 500px; }
+
+/* ── SUB-PAGE HEADER ────────────────────────── */
+.pghd {
+  padding: calc(var(--nav-h) + 64px) 0 52px;
+  border-bottom: 1px solid var(--border);
+}
+.pghd-back {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; font-weight: 500; color: var(--t3);
+  background: none; border: none; padding: 0;
+  margin-bottom: 24px;
+  transition: color 0.14s; cursor: pointer;
+  letter-spacing: 0.01em;
+}
+.pghd-back:hover { color: var(--text); }
+.pghd .lbl { display: block; margin-bottom: 12px; }
+.pghd h1 {
+  font-size: clamp(36px, 8vw, 80px);
+  font-weight: 700; letter-spacing: -0.030em;
+  line-height: 0.95; color: var(--dark);
+  margin-bottom: 16px;
+}
+.pghd p {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--t3); max-width: 500px; line-height: 1.7;
+}
+
+/* ── FOOTER ─────────────────────────────────── */
+footer {
+  background: var(--dark);
+  padding: 64px 32px 40px;
+}
+.footer-in {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 48px;
+}
+.footer-top {
+  display: flex; flex-direction: column; gap: 32px;
+}
+@media (min-width: 768px) {
+  .footer-top { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+}
+.footer-logo {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(255,255,255,0.85); margin-bottom: 8px;
+}
+.footer-logo-mark {
+  width: 24px; height: 24px; border-radius: 5px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 800; color: #fff; letter-spacing: 0;
+}
+.footer-sub { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 2px; }
+.footer-nav a {
+  font-size: 13px; color: rgba(255,255,255,0.35);
+  padding: 5px 11px; border-radius: 6px; cursor: pointer;
+  transition: color 0.14s;
+}
+.footer-nav a:hover { color: rgba(255,255,255,0.75); }
+.footer-div { width: 100%; height: 1px; background: rgba(255,255,255,0.07); }
+.footer-bottom {
+  font-size: 12px; color: rgba(255,255,255,0.22); line-height: 1.9;
+  display: flex; flex-direction: column; gap: 4px;
+}
+@media (min-width: 768px) {
+  .footer-bottom { flex-direction: row; justify-content: space-between; }
+}
+
+/* ════════════════════════════════════════════ */
+/*  HOME PAGE                                   */
+/* ════════════════════════════════════════════ */
+
+.home-hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: calc(var(--nav-h) + 80px) 32px 100px;
+  position: relative; overflow: hidden;
+}
+.home-hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 70% 50% at 50% 10%, rgba(184,150,62,0.06) 0%, transparent 70%);
+}
+.home-eyebrow {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px; opacity: 0.9;
+}
+.home-wordmark {
+  font-size: clamp(60px, 14vw, 148px);
+  font-weight: 700; letter-spacing: -0.030em; line-height: 0.88;
+  color: var(--dark); margin-bottom: 4px;
+}
+.home-wordmark-sub {
+  font-size: clamp(18px, 4vw, 46px);
+  font-weight: 300; letter-spacing: 0.22em;
+  color: var(--t3); text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.home-desc {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--t3); max-width: 440px;
+  line-height: 1.7; margin-bottom: 48px;
+}
+.home-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+/* Ventures */
+.ventures-wrap {
+  padding: 96px 0 120px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+}
+.ventures-head { text-align: center; margin-bottom: 64px; }
+.ventures-head .lbl { display: block; margin-bottom: 12px; }
+.ventures-head h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark);
+}
+.ventures-head p {
+  font-size: 15px; color: var(--t3); margin-top: 12px;
+  max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.75;
+}
+.ventures-grid {
+  display: grid; grid-template-columns: 1fr; gap: 16px;
+}
+@media (min-width: 640px)  { .ventures-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1000px) { .ventures-grid { grid-template-columns: repeat(3,1fr); } }
+
+.vc {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 18px; padding: 32px;
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+.vc:hover {
+  box-shadow: 0 20px 56px rgba(0,0,0,0.07);
+  transform: translateY(-4px); border-color: var(--t4);
+}
+.vc-num {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  color: var(--t4); margin-bottom: 24px;
+}
+.vc-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; flex-shrink: 0;
+}
+.vc-cat {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px;
+}
+.vc-title {
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -0.01em; color: var(--dark);
+  margin-bottom: 12px;
+}
+.vc-desc {
+  font-size: 14px; color: var(--t3); line-height: 1.75; flex: 1;
+}
+.vc-arrow {
+  margin-top: 28px; align-self: flex-end;
+  width: 32px; height: 32px;
+  background: var(--bg3); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.vc:hover .vc-arrow { background: var(--dark); }
+.vc-arrow svg { transition: stroke 0.15s; }
+.vc:hover .vc-arrow svg { stroke: #fff; }
+
+/* About strip */
+.about-strip { padding: 80px 0; border-top: 1px solid var(--border); }
+.about-strip-inner {
+  display: grid; grid-template-columns: 1fr; gap: 40px;
+}
+@media (min-width: 768px) {
+  .about-strip-inner { grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; }
+}
+.about-strip h3 {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark); line-height: 1.2;
+}
+.about-strip p { font-size: 15px; color: var(--t3); line-height: 1.85; }
+.about-strip p + p { margin-top: 14px; }
+
+/* ════════════════════════════════════════════ */
+/*  APPS PAGE                                   */
+/* ════════════════════════════════════════════ */
+.apps-section { padding: 72px 0; }
+
+.app-card {
+  padding: 40px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; margin-bottom: 20px;
+}
+.app-card-header {
+  display: flex; align-items: center; gap: 22px;
+  margin-bottom: 28px;
+}
+.app-icon {
+  width: 92px; height: 92px; border-radius: 22px;
+  overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06);
+}
+.app-icon img { width: 100%; height: 100%; object-fit: cover; }
+.app-header-text { display: flex; flex-direction: column; gap: 6px; }
+.app-header-text .lbl { display: block; }
+.app-header-text h2 {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700; letter-spacing: -0.025em; color: var(--dark);
+  line-height: 1;
+}
+.app-badges { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 4px; }
+.app-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 4px 11px; border-radius: 100px;
+  font-size: 11px; color: var(--t3);
+}
+.app-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; }
+.app-tagline {
+  font-size: 15px; color: var(--t3); font-style: italic; margin-bottom: 14px;
+}
+.app-desc {
+  font-size: 15px; color: var(--t2); line-height: 1.8; margin-bottom: 24px;
+}
+.app-feats {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px;
+}
+.app-feat {
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 12px; color: var(--t2);
+}
+.app-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.apps-coming {
+  padding: 48px; text-align: center;
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border: 1px dashed var(--border); border-radius: 20px;
+  margin-top: 8px;
+}
+.apps-coming h3 {
+  font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 8px;
+}
+.apps-coming p { font-size: 14px; color: var(--t3); line-height: 1.75; max-width: 360px; margin: 0 auto; }
+
+/* ════════════════════════════════════════════ */
+/*  CLOTHING PAGE                               */
+/* ════════════════════════════════════════════ */
+.clothing-brand {
+  padding: 64px 0; border-bottom: 1px solid var(--border);
+}
+.clothing-brand-inner {
+  display: grid; grid-template-columns: 1fr; gap: 40px;
+}
+@media (min-width: 768px) {
+  .clothing-brand-inner { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+}
+.clothing-brand-text .lbl { display: block; margin-bottom: 12px; }
+.clothing-brand-text h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark);
+  line-height: 1.15; margin-bottom: 20px;
+}
+.clothing-brand-text p {
+  font-size: 15px; color: var(--t2); line-height: 1.82; margin-bottom: 14px;
+}
+.clothing-brand-visual {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 18px; padding: 48px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 240px; text-align: center; gap: 10px;
+}
+.clothing-visual-mark {
+  font-size: 48px; font-weight: 700; letter-spacing: -0.03em;
+  color: var(--dark); line-height: 1;
+}
+.clothing-visual-sub {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--t4);
+}
+.clothing-mission {
+  padding: 80px 0; background: var(--dark); text-align: center;
+}
+.clothing-mission blockquote {
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 300; color: rgba(255,255,255,0.6);
+  max-width: 660px; margin: 0 auto; line-height: 1.65;
+}
+.clothing-mission blockquote em {
+  color: rgba(255,255,255,0.9); font-style: normal; font-weight: 500;
+}
+.clothing-details { padding: 72px 0; border-bottom: 1px solid var(--border); }
+.clothing-cols {
+  display: grid; grid-template-columns: 1fr; gap: 40px; margin-top: 40px;
+}
+@media (min-width: 640px) { .clothing-cols { grid-template-columns: repeat(2,1fr); gap: 48px; } }
+@media (min-width: 960px) { .clothing-cols { grid-template-columns: repeat(3,1fr); } }
+.clothing-col h3 {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--dark); margin-bottom: 16px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.clothing-col ul { list-style: none; }
+.clothing-col ul li {
+  font-size: 14px; color: var(--t3); padding: 7px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.clothing-col ul li:last-child { border-bottom: none; }
+.clothing-col ul li span { color: var(--t4); font-size: 12px; }
+.clothing-col p { font-size: 14px; color: var(--t3); line-height: 1.8; }
+.clothing-cta { padding: 72px 0; text-align: center; }
+.clothing-cta h3 {
+  font-size: clamp(22px, 3.5vw, 36px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark); margin-bottom: 12px;
+}
+.clothing-cta p {
+  font-size: 15px; color: var(--t3); margin-bottom: 32px;
+  max-width: 380px; margin-left: auto; margin-right: auto; line-height: 1.75;
+}
+
+/* ════════════════════════════════════════════ */
+/*  PROPERTY SERVICES PAGE                      */
+/* ════════════════════════════════════════════ */
+.prop-section {
+  padding: 72px 0; border-bottom: 1px solid var(--border);
+}
+.prop-section:last-of-type { border-bottom: none; }
+
+.prop-intro { margin-bottom: 48px; max-width: 600px; }
+.prop-intro h2 {
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark);
+  margin-top: 10px; margin-bottom: 12px;
+}
+.prop-intro p { font-size: 15px; color: var(--t3); line-height: 1.82; }
+
+.prop-logo-block {
+  display: flex; align-items: center; gap: 24px;
+  padding: 32px; background: var(--bg2);
+  border: 1px solid var(--border); border-radius: var(--r);
+  margin-bottom: 40px;
+}
+.prop-logo-block img {
+  width: 120px; height: auto; flex-shrink: 0;
+}
+.prop-logo-block-text h3 {
+  font-size: 18px; font-weight: 600; color: var(--dark); margin-bottom: 4px;
+}
+.prop-logo-block-text p {
+  font-size: 14px; color: var(--t3); line-height: 1.75;
+}
+
+.service-grid {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+}
+@media (min-width: 560px) { .service-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 900px) { .service-grid { grid-template-columns: repeat(3,1fr); } }
+
+.service-item {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 24px;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.service-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.05); transform: translateY(-2px); }
+.service-bar {
+  width: 3px; height: 20px; border-radius: 2px;
+  background: var(--gold); margin-bottom: 14px;
+}
+.service-item h4 {
+  font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px;
+}
+.service-item p { font-size: 13px; color: var(--t3); line-height: 1.75; }
+
+.consult-cta {
+  background: var(--dark);
+  border-radius: 20px; padding: 52px;
+  display: grid; grid-template-columns: 1fr; gap: 32px;
+  align-items: center; margin-top: 8px;
+}
+@media (min-width: 768px) { .consult-cta { grid-template-columns: 1fr auto; } }
+.consult-cta-text .lbl { display: block; color: rgba(184,150,62,0.9); margin-bottom: 12px; }
+.consult-cta-text h3 {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 600; letter-spacing: -0.015em;
+  color: #fff; margin-bottom: 12px;
+}
+.consult-cta-text p { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+.consult-cta-actions { display: flex; flex-direction: column; gap: 10px; }
+
+/* ════════════════════════════════════════════ */
+/*  ABOUT PAGE                                  */
+/* ════════════════════════════════════════════ */
+.about-page { padding: 0 0 80px; }
+.about-lead {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+.about-lead-inner {
+  display: grid; grid-template-columns: 1fr; gap: 40px;
+}
+@media (min-width: 768px) {
+  .about-lead-inner { grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+}
+.about-lead h2 {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 600; letter-spacing: -0.02em; color: var(--dark);
+  line-height: 1.15; margin-top: 12px;
+}
+.about-lead p {
+  font-size: 15px; color: var(--t2); line-height: 1.85; margin-bottom: 14px;
+}
+.about-venture-list { padding: 64px 0; border-bottom: 1px solid var(--border); }
+.about-venture-row {
+  display: grid; grid-template-columns: 1fr; gap: 20px;
+}
+@media (min-width: 600px) {
+  .about-venture-row { grid-template-columns: repeat(2,1fr); }
+}
+@media (min-width: 900px) {
+  .about-venture-row { grid-template-columns: repeat(4,1fr); }
+}
+.about-venture-item {
+  padding: 24px; background: var(--bg2);
+  border: 1px solid var(--border); border-radius: var(--r);
+}
+.about-venture-item .vc-cat { margin-bottom: 6px; }
+.about-venture-item h4 {
+  font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 6px;
+}
+.about-venture-item p { font-size: 13px; color: var(--t3); line-height: 1.75; }
+.about-values { padding: 64px 0; }
+.about-values-grid {
+  display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px;
+}
+@media (min-width: 640px) { .about-values-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 900px) { .about-values-grid { grid-template-columns: repeat(3,1fr); } }
+.about-value {
+  padding: 28px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--r);
+}
+.about-value-num {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  color: var(--gold); margin-bottom: 12px;
+}
+.about-value h4 {
+  font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px;
+}
+.about-value p { font-size: 13px; color: var(--t3); line-height: 1.75; }
+
+/* ════════════════════════════════════════════ */
+/*  CONTACT PAGE                                */
+/* ════════════════════════════════════════════ */
+.contact-page { padding: 0 0 80px; }
+.contact-wrap {
+  max-width: 640px; margin: 0 auto; padding: 64px 32px 0;
+}
+@media (max-width: 480px) { .contact-wrap { padding: 48px 20px 0; } }
+.contact-email-block {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 28px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--r);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.contact-email-block:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.contact-email-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-email-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--t4); margin-bottom: 3px;
+}
+.contact-email-addr {
+  font-size: 15px; font-weight: 500; color: var(--text);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<div class="nav-wrap" id="nav-wrap">
+<nav>
+  <span class="nav-logo" onclick="go('home')">
+    <span class="nav-logo-mark">7K</span>
+    Seven Kilo Enterprises LLC
+  </span>
+  <ul class="nav-links">
+    <li><a onclick="go('home')"     id="nl-home">Home</a></li>
+    <li><a onclick="go('apps')"     id="nl-apps">Apps</a></li>
+    <li><a onclick="go('clothing')" id="nl-clothing">Clothing</a></li>
+    <li><a onclick="go('property')" id="nl-property">Property</a></li>
+    <li><a onclick="go('about')"    id="nl-about">About</a></li>
+    <li><a onclick="go('contact')"  id="nl-contact">Contact</a></li>
+  </ul>
+  <button class="ham" id="ham" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+</div>
+
+<div class="mob-menu" id="mob">
+  <a onclick="go('home')">Home</a>
+  <a onclick="go('apps')">App Development</a>
+  <a onclick="go('clothing')">Sainted Streets Clothing</a>
+  <a onclick="go('property')">Property Services</a>
+  <a onclick="go('about')">About</a>
+  <a onclick="go('contact')">Contact</a>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  HOME                                      -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-home" class="page">
+
+  <section class="home-hero">
+    <div class="home-hero-bg"></div>
+    <p class="home-eyebrow">Seven Kilo Enterprises LLC</p>
+    <h1 class="home-wordmark">Seven<br>Kilo</h1>
+    <p class="home-wordmark-sub">Enterprises</p>
+    <p class="home-desc">Multiple ventures. One vision. Building companies that serve, inspire, and endure.</p>
+    <div class="home-actions">
+      <button class="btn" onclick="go('apps')">Explore Our Work</button>
+      <button class="btn btn-outline" onclick="go('about')">About the Company</button>
+    </div>
+  </section>
+
+  <section class="ventures-wrap" id="ventures-anchor">
+    <div class="wrap">
+      <div class="ventures-head">
+        <span class="lbl">What We Build</span>
+        <h2>Our Ventures</h2>
+        <p>From iOS apps to apparel to property services — Seven Kilo Enterprises LLC operates across industries with purpose-driven focus.</p>
+      </div>
+      <div class="ventures-grid">
+
+        <div class="vc" onclick="go('apps')">
+          <p class="vc-num">01</p>
+          <div class="vc-icon" style="background:#E8F0FF;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B6FF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="3"/>
+              <line x1="9" y1="18" x2="15" y2="18"/>
+            </svg>
+          </div>
+          <p class="vc-cat">Technology</p>
+          <h3 class="vc-title">App Development</h3>
+          <p class="vc-desc">Native iOS apps built without subscriptions or trackers. Korrvox, Mitivox, and more on the way.</p>
+          <div class="vc-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8A8680" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"/></svg>
+          </div>
+        </div>
+
+        <div class="vc" onclick="go('clothing')">
+          <p class="vc-num">02</p>
+          <div class="vc-icon" style="background:#F5EFE8;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#B8963E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6l3-3 3 3h6l3-3 3 3-3 3v9a1 1 0 01-1 1H7a1 1 0 01-1-1V9L3 6z"/>
+            </svg>
+          </div>
+          <p class="vc-cat">Apparel</p>
+          <h3 class="vc-title">Sainted Streets Clothing</h3>
+          <p class="vc-desc">Streetwear built on community. Honoring real cities through bold, minimal designs worn with purpose.</p>
+          <div class="vc-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8A8680" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"/></svg>
+          </div>
+        </div>
+
+        <div class="vc" onclick="go('property')">
+          <p class="vc-num">03</p>
+          <div class="vc-icon" style="background:#EDF3EE;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3A8A50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+            </svg>
+          </div>
+          <p class="vc-cat">Property &amp; Consulting</p>
+          <h3 class="vc-title">Property Services &amp; Consulting</h3>
+          <p class="vc-desc">Property management, maintenance services, and expert construction consulting through 7K Global Consulting.</p>
+          <div class="vc-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8A8680" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="about-strip">
+    <div class="wrap">
+      <div class="about-strip-inner">
+        <div>
+          <span class="lbl" style="display:block;margin-bottom:12px">About the Company</span>
+          <h3>A company built<br>across industries.</h3>
+        </div>
+        <div>
+          <p>Seven Kilo Enterprises LLC is an independent, multi-venture company founded on the belief that great products and services can come from a small team with a clear mission and an uncompromising commitment to quality.</p>
+          <p style="margin-top:14px">From digital products serving iOS users worldwide to apparel rooted in community identity to professional property services — Seven Kilo Enterprises LLC enters every sector it touches with purpose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a>
+          <a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a>
+          <a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a>
+          <a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  APPS                                      -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-apps" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('home')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Home
+      </button>
+      <span class="lbl">Technology</span>
+      <h1>App<br>Development</h1>
+      <p>Native iOS apps built with no subscriptions, no trackers, and no compromise. Real tools for real people.</p>
+    </div>
+  </div>
+
+  <section class="apps-section">
+    <div class="wrap">
+
+      <!-- Korrvox -->
+      <div class="app-card">
+        <div class="app-card-header">
+          <div class="app-icon">
+            <img src="assets/korrvox-icon.png" alt="Korrvox App Icon"/>
+          </div>
+          <div class="app-header-text">
+            <span class="lbl">Voice Memorization</span>
+            <h2>Korrvox</h2>
+            <div class="app-badges">
+              <span class="app-badge"><span class="app-badge-dot"></span>iPhone &amp; iPad</span>
+              <span class="app-badge">One-time purchase</span>
+            </div>
+          </div>
+        </div>
+        <p class="app-tagline">Memorize anything. Hear it in your own voice.</p>
+        <p class="app-desc">Record yourself reading any text and loop it back continuously — on your commute, during a workout, or as you fall asleep. Built for deep retention. No subscriptions, no tracking.</p>
+        <div class="app-feats">
+          <span class="app-feat">Voice Recording Loop</span>
+          <span class="app-feat">Sleep Looper</span>
+          <span class="app-feat">Memory Games</span>
+          <span class="app-feat">Sequencer Playlists</span>
+          <span class="app-feat">iCloud Sync</span>
+          <span class="app-feat">Completely Private</span>
+        </div>
+        <div class="app-links">
+          <a class="btn" href="https://www.korrvox.com" target="_blank" rel="noopener">
+            Visit Korrvox.com
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mitivox -->
+      <div class="app-card">
+        <div class="app-card-header">
+          <div class="app-icon">
+            <img src="assets/mitivox-icon.png" alt="Mitivox App Icon"/>
+          </div>
+          <div class="app-header-text">
+            <span class="lbl">White Noise &amp; Sleep Audio</span>
+            <h2>Mitivox</h2>
+            <div class="app-badges">
+              <span class="app-badge"><span class="app-badge-dot"></span>Available on iOS</span>
+              <span class="app-badge">White Noise &amp; Sleep</span>
+            </div>
+          </div>
+        </div>
+        <p class="app-tagline">Shape your sound. Shape your sleep.</p>
+        <p class="app-desc">Mix white noise, music, and sound effects with independent volume controls, then set a sleep timer to fade everything out gently. Built for focus, wind-down, and deep sleep. No subscriptions, no tracking.</p>
+        <div class="app-feats">
+          <span class="app-feat">White Noise Mixer</span>
+          <span class="app-feat">Music &amp; SFX Layering</span>
+          <span class="app-feat">Sleep Timer</span>
+          <span class="app-feat">Gentle Fade-Out</span>
+          <span class="app-feat">Independent Volume Controls</span>
+          <span class="app-feat">No Trackers</span>
+        </div>
+        <div class="app-links">
+          <a class="btn" href="https://www.mitivox.com" target="_blank" rel="noopener">
+            Visit Mitivox.com
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="apps-coming">
+        <h3>More Apps on the Way</h3>
+        <p>Seven Kilo Enterprises LLC is actively developing additional iOS applications. All built native. All built to last.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SAINTED STREETS CLOTHING                  -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-clothing" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('home')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Home
+      </button>
+      <span class="lbl">Apparel</span>
+      <h1>Sainted Streets<br>Clothing</h1>
+      <p>Streetwear built on community. Shaped by identity. Worn with purpose.</p>
+    </div>
+  </div>
+
+  <section class="clothing-brand">
+    <div class="wrap">
+      <div class="clothing-brand-inner">
+        <div class="clothing-brand-text">
+          <span class="lbl">The Brand</span>
+          <h2>Honor where you come from.</h2>
+          <p>Sainted Streets Clothing is a streetwear brand that honors real cities and their cultures through minimal, bold designs. Not built around trends or hype — built around belonging, respect, and representing where you come from.</p>
+          <p>Every piece is rooted in a real community. Every design carries the identity of a specific place and the people who shaped it. Sainted Streets Clothing invites you to wear your story.</p>
+          <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;">
+            <a class="btn" href="https://www.saintedstreetsclothing.com" target="_blank" rel="noopener">
+              Shop the Collection
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="clothing-brand-visual">
+          <div class="clothing-visual-mark">SS</div>
+          <div class="clothing-visual-sub">Sainted Streets Clothing</div>
+          <div style="margin-top:16px;font-size:12px;color:var(--t4);line-height:1.8;text-align:center;">
+            Built on Community<br>Shaped by Identity<br>Worn with Purpose
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clothing-mission">
+    <div class="wrap">
+      <blockquote>
+        "This isn't about trends or hype — it's about <em>belonging</em>, <em>respect</em>, and representing <em>where you come from</em>."
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="clothing-details">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="lbl">What We Offer</span>
+        <h2>Products &amp; Community</h2>
+        <p>Each collection represents a city, its culture, and the people who call it home.</p>
+      </div>
+      <div class="clothing-cols">
+        <div class="clothing-col">
+          <h3>Products</h3>
+          <ul>
+            <li>Drop Shoulder Cotton Tees</li>
+            <li>Oversized Shirts</li>
+            <li>Polo Shirts</li>
+            <li>Graphic Tees <span>Printed sleeves</span></li>
+          </ul>
+        </div>
+        <div class="clothing-col">
+          <h3>Featured Cities</h3>
+          <ul>
+            <li>Riyadh</li>
+            <li>Compton Legacy</li>
+            <li>St. Petersburg</li>
+            <li>Charleroi, Belgique</li>
+            <li>Biloxi</li>
+            <li>Largo Wisdom</li>
+            <li>Jackson TNN</li>
+            <li>California Republic</li>
+          </ul>
+        </div>
+        <div class="clothing-col">
+          <h3>Brand Purpose</h3>
+          <p>Sainted Streets Clothing was established to celebrate the communities that form individual identity — spotlighting underrepresented places by inviting customers to submit their hometown stories, which inform future collections and give voice to cities rarely seen in fashion.</p>
+          <p style="margin-top:12px">Price range: $35 – $45.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clothing-cta">
+    <div class="wrap">
+      <h3>Represent Your City.</h3>
+      <p>Visit the Sainted Streets Clothing store and find your community in the collection.</p>
+      <a class="btn" href="https://www.saintedstreetsclothing.com" target="_blank" rel="noopener">
+        Visit saintedstreetsclothing.com
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  PROPERTY SERVICES & CONSULTING            -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-property" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('home')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Home
+      </button>
+      <span class="lbl">Property &amp; Consulting</span>
+      <h1>Property Services<br>&amp; Consulting</h1>
+      <p>Reliable property management and maintenance services, alongside professional construction consulting through 7K Global Consulting.</p>
+    </div>
+  </div>
+
+  <!-- Property Services -->
+  <section class="prop-section">
+    <div class="wrap">
+      <div class="prop-logo-block">
+        <img src="assets/7k-property-logo.png" alt="Seven Kilo Enterprises LLC — Property Services"/>
+        <div class="prop-logo-block-text">
+          <h3>Seven Kilo Enterprises LLC Property Services</h3>
+          <p>Professional property management and general maintenance services. Dependable, responsive, and detail-oriented — managing and maintaining properties the right way.</p>
+        </div>
+      </div>
+
+      <div class="prop-intro">
+        <span class="lbl" style="display:block;margin-bottom:10px">Property Management &amp; Services</span>
+        <h2>Dependable service.<br>Well-managed properties.</h2>
+        <p>Seven Kilo Enterprises LLC provides property management and general maintenance services for residential and commercial properties. From day-to-day upkeep to coordinating vendors, we keep properties running smoothly so owners don't have to.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>Property Management</h4>
+          <p>Full-service management including tenant communication, scheduling, and ongoing property oversight.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>Preventive Maintenance</h4>
+          <p>Scheduled upkeep and regular inspections to catch issues early and extend the life of a property.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>General Repairs &amp; Upkeep</h4>
+          <p>Skilled general maintenance and repair work across a wide range of residential and commercial needs.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>Vendor Coordination</h4>
+          <p>Sourcing and managing trusted contractors and service providers on behalf of property owners.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>Seasonal Maintenance</h4>
+          <p>Seasonal preparation and upkeep to keep properties in top condition throughout the year.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar"></div>
+          <h4>Property Inspections</h4>
+          <p>Routine and on-demand inspections with detailed reporting to keep owners fully informed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7K Global Consulting -->
+  <section class="prop-section">
+    <div class="wrap">
+      <div class="prop-intro">
+        <span class="lbl" style="display:block;margin-bottom:10px">7K Global Consulting</span>
+        <h2>On your side<br>of the table.</h2>
+        <p>7K Global Consulting provides independent construction consulting services — working exclusively for project owners. We bring focused oversight, accountability, and quality control to construction projects at every stage.</p>
+      </div>
+
+      <div class="service-grid" style="margin-bottom:32px">
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Owner's Representative</h4>
+          <p>Acting as your advocate on-site — monitoring progress, managing contractor relationships, and protecting your interests throughout the project.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Construction Auditing</h4>
+          <p>Independent review of contractor billing, pay applications, and change orders to ensure accuracy and accountability on your project.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Quality Control Oversight</h4>
+          <p>On-site monitoring of work quality and progress to verify that construction is meeting the standards outlined in project documents.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Budget &amp; Cost Review</h4>
+          <p>Ongoing review of project costs and budget tracking to identify discrepancies and prevent financial overruns.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Document &amp; Contract Review</h4>
+          <p>Careful review of construction contracts, scope documents, and change orders to identify gaps and risk areas before you commit.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-bar" style="background:#3A8A50"></div>
+          <h4>Site Observation Reports</h4>
+          <p>Regular site visits with documented observations and reporting to keep owners informed of actual project conditions.</p>
+        </div>
+      </div>
+
+      <div class="consult-cta">
+        <div class="consult-cta-text">
+          <span class="lbl">7K Global Consulting</span>
+          <h3>Independent construction consulting for owners who need a trusted advocate.</h3>
+          <p>Visit 7kglobalconsulting.com for full service information and to connect with our consulting team directly.</p>
+        </div>
+        <div class="consult-cta-actions">
+          <a class="btn btn-gold" href="https://www.7kglobalconsulting.com" target="_blank" rel="noopener">
+            Visit 7kglobalconsulting.com
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  ABOUT                                     -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-about" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('home')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Home
+      </button>
+      <span class="lbl">About the Company</span>
+      <h1>Seven Kilo Enterprises LLC</h1>
+      <p>An independent multi-venture company operating across technology, apparel, property services, and consulting.</p>
+    </div>
+  </div>
+
+  <div class="about-page">
+
+    <section class="about-lead">
+      <div class="wrap">
+        <div class="about-lead-inner">
+          <div>
+            <span class="lbl" style="display:block;margin-bottom:12px">Who We Are</span>
+            <h2>Built on purpose.<br>Operating across industries.</h2>
+          </div>
+          <div>
+            <p>Seven Kilo Enterprises LLC is an independent holding company built on the conviction that a focused, committed team can build excellent products and deliver professional services across multiple industries — without compromising quality or integrity in any of them.</p>
+            <p>We don't chase trends. We identify real needs and build real solutions — whether that's a mobile app that helps people retain what matters, clothing that honors the communities people come from, property management that owners can actually rely on, or consulting that gives project owners a genuine advocate on their side.</p>
+            <p>Seven Kilo Enterprises LLC is a small operation run with high standards. Every venture under this company reflects the same core commitment: do it right, or don't do it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-venture-list">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="lbl">Our Portfolio</span>
+          <h2>The Ventures</h2>
+          <p>Four distinct businesses operating under one company with one standard.</p>
+        </div>
+        <div class="about-venture-row">
+          <div class="about-venture-item" style="cursor:pointer" onclick="go('apps')">
+            <p class="vc-cat">Technology</p>
+            <h4>App Development</h4>
+            <p>Native iOS apps — Korrvox and Mitivox — built without subscriptions, trackers, or third-party SDKs.</p>
+          </div>
+          <div class="about-venture-item" style="cursor:pointer" onclick="go('clothing')">
+            <p class="vc-cat">Apparel</p>
+            <h4>Sainted Streets Clothing</h4>
+            <p>Community-driven streetwear honoring real cities through bold, minimal design.</p>
+          </div>
+          <div class="about-venture-item" style="cursor:pointer" onclick="go('property')">
+            <p class="vc-cat">Property</p>
+            <h4>Property Services</h4>
+            <p>Dependable property management and general maintenance services for residential and commercial properties.</p>
+          </div>
+          <div class="about-venture-item" style="cursor:pointer" onclick="go('property')">
+            <p class="vc-cat">Consulting</p>
+            <h4>7K Global Consulting</h4>
+            <p>Independent construction consulting — owner's representation, auditing, and quality control oversight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-values">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="lbl">How We Operate</span>
+          <h2>What We Stand For</h2>
+        </div>
+        <div class="about-values-grid">
+          <div class="about-value">
+            <p class="about-value-num">01</p>
+            <h4>Quality Without Compromise</h4>
+            <p>Every product and service under Seven Kilo Enterprises LLC is built to a standard we're proud of. No shortcuts, no cutting corners to hit a deadline or a margin.</p>
+          </div>
+          <div class="about-value">
+            <p class="about-value-num">02</p>
+            <h4>Privacy &amp; Integrity</h4>
+            <p>Our apps collect no personal data, carry no ads, and use no third-party trackers. That same standard of integrity extends to every service we offer.</p>
+          </div>
+          <div class="about-value">
+            <p class="about-value-num">03</p>
+            <h4>Purpose-Driven Work</h4>
+            <p>We build things that matter to real people — from mobile memorization tools to clothing that celebrates underrepresented communities.</p>
+          </div>
+          <div class="about-value">
+            <p class="about-value-num">04</p>
+            <h4>Independent &amp; Self-Directed</h4>
+            <p>Seven Kilo Enterprises LLC is fully independent. No outside investors, no corporate mandates. We move on our own timeline and answer to our customers.</p>
+          </div>
+          <div class="about-value">
+            <p class="about-value-num">05</p>
+            <h4>Owners First</h4>
+            <p>In our consulting work, we represent the owner — full stop. No conflicts of interest. No divided loyalties. Just clear, honest advocacy.</p>
+          </div>
+          <div class="about-value">
+            <p class="about-value-num">06</p>
+            <h4>Long-Term Thinking</h4>
+            <p>We build for durability, not momentum. Apps with no subscriptions. Clothing rooted in something real. Services that actually hold up over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  CONTACT                                   -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-contact" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('home')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Home
+      </button>
+      <span class="lbl">Get in Touch</span>
+      <h1>Contact<br>Us</h1>
+      <p>Questions about our apps, services, or anything else — we'd love to hear from you.</p>
+    </div>
+  </div>
+
+  <div class="contact-page">
+    <div class="contact-wrap">
+
+      <a href="mailto:info@sevenkilo.com" class="contact-email-block">
+        <div class="contact-email-icon">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="14" height="10" rx="2"/>
+            <path d="M2 6l7 5 7-5"/>
+          </svg>
+        </div>
+        <div>
+          <p class="contact-email-label">Email</p>
+          <p class="contact-email-addr">info@sevenkilo.com</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>info@sevenkilo.com</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+var PAGES = ['home','apps','clothing','property','about','contact'];
+
+// Hide nav on scroll down, show on scroll up
+(function() {
+  var wrap = document.getElementById('nav-wrap');
+  var lastY = 0;
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    if (y < 80) {
+      wrap.classList.remove('nav-hidden');
+    } else if (y > lastY) {
+      wrap.classList.add('nav-hidden');
+    } else {
+      wrap.classList.remove('nav-hidden');
+    }
+    lastY = y;
+  }, { passive: true });
+})();
+
+function go(id) {
+  if (PAGES.indexOf(id) === -1) id = 'home';
+  PAGES.forEach(function(p) {
+    var el = document.getElementById('p-' + p);
+    if (el) el.classList.toggle('active', p === id);
+    var nl = document.getElementById('nl-' + p);
+    if (nl) nl.classList.toggle('active', p === id);
+  });
+  window.scrollTo(0, 0);
+  closeMenu();
+  try { history.pushState(null, '', '#' + id); } catch(e) {}
+}
+
+window.addEventListener('popstate', function() {
+  var h = location.hash.replace('#', '') || 'home';
+  go(PAGES.indexOf(h) !== -1 ? h : 'home');
+});
+
+(function() {
+  var h = location.hash.replace('#', '');
+  go(PAGES.indexOf(h) !== -1 ? h : 'home');
+})();
+
+function toggleMenu() {
+  var menu = document.getElementById('mob');
+  var btn  = document.getElementById('ham');
+  var open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+}
+
+function closeMenu() {
+  document.getElementById('mob').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
+}
+
+</script>
+
+</body>
+</html>
