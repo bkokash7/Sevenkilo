@@ -623,6 +623,134 @@ footer {
 .about-value p { font-size: 13px; color: var(--t3); line-height: 1.75; }
 
 /* ════════════════════════════════════════════ */
+/*  ZYGGLY PAGE                                 */
+/* ════════════════════════════════════════════ */
+.zyggly-hero {
+  padding: 72px 0 64px;
+  border-bottom: 1px solid var(--border);
+}
+.zyggly-hero-inner {
+  display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+}
+@media (min-width: 768px) {
+  .zyggly-hero-inner { grid-template-columns: 1fr 1fr; gap: 72px; }
+}
+.zyggly-app-icon {
+  width: 110px; height: 110px; border-radius: 26px;
+  overflow: hidden; flex-shrink: 0;
+  box-shadow: 0 12px 40px rgba(124,58,237,0.18), 0 0 0 1px rgba(0,0,0,0.06);
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.zyggly-app-icon img { width: 100%; height: 100%; object-fit: cover; }
+.zyggly-app-icon-placeholder {
+  font-size: 48px; font-weight: 800; color: rgba(255,255,255,0.9);
+  letter-spacing: -0.04em;
+}
+.zyggly-hero-text h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700; letter-spacing: -0.025em; color: var(--dark);
+  line-height: 1.1; margin-bottom: 16px;
+}
+.zyggly-hero-text p {
+  font-size: 16px; color: var(--t2); line-height: 1.82; margin-bottom: 24px;
+}
+.zyggly-tagline {
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.2; margin-bottom: 20px;
+  background: linear-gradient(135deg, #7c3aed, #f97316);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.zyggly-visual {
+  background: linear-gradient(135deg, #f5f0ff 0%, #fff7ed 100%);
+  border: 1px solid #e9d5ff; border-radius: 24px;
+  padding: 48px 40px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.zyggly-shapes {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.zyggly-shape {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700;
+}
+.zyggly-visual-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #9333ea; margin-top: 8px;
+}
+.zyggly-visual-sub { font-size: 13px; color: var(--t3); }
+
+.zyggly-badges { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 28px; }
+.zyggly-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 13px; border-radius: 100px;
+  font-size: 11px; font-weight: 500;
+}
+.zyggly-badge-purple { background: #f3e8ff; color: #7c3aed; }
+.zyggly-badge-orange { background: #fff7ed; color: #ea580c; }
+.zyggly-badge-blue   { background: #eff6ff; color: #2563eb; }
+.zyggly-badge-green  { background: #f0fdf4; color: #16a34a; }
+
+.zyggly-games { padding: 72px 0; border-bottom: 1px solid var(--border); }
+.zyggly-games-grid {
+  display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 40px;
+}
+@media (min-width: 560px) { .zyggly-games-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 900px) { .zyggly-games-grid { grid-template-columns: repeat(3,1fr); } }
+
+.zyggly-game-card {
+  border-radius: 18px; padding: 28px;
+  border: 1px solid transparent;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.zyggly-game-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+.zyggly-game-icon {
+  font-size: 32px; margin-bottom: 14px; display: block;
+}
+.zyggly-game-card h4 {
+  font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 7px;
+}
+.zyggly-game-card p { font-size: 13px; color: var(--t3); line-height: 1.75; }
+
+.zyggly-trust { padding: 72px 0; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.zyggly-trust-grid {
+  display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 40px;
+}
+@media (min-width: 560px) { .zyggly-trust-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 900px) { .zyggly-trust-grid { grid-template-columns: repeat(4,1fr); } }
+.zyggly-trust-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 24px; text-align: center;
+}
+.zyggly-trust-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.zyggly-trust-item h4 { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+.zyggly-trust-item p { font-size: 12px; color: var(--t3); line-height: 1.7; }
+
+.zyggly-cta { padding: 80px 0; text-align: center; }
+.zyggly-cta-box {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #f97316 100%);
+  border-radius: 24px; padding: 56px 40px;
+  max-width: 600px; margin: 0 auto;
+}
+.zyggly-cta-box h3 {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 700; letter-spacing: -0.02em;
+  color: #fff; margin-bottom: 12px; line-height: 1.2;
+}
+.zyggly-cta-box p {
+  font-size: 15px; color: rgba(255,255,255,0.75);
+  margin-bottom: 28px; line-height: 1.7;
+}
+.btn-white {
+  background: #fff; color: #7c3aed; border: none;
+}
+.btn-white:hover { opacity: 0.93; transform: translateY(-1px); }
+
+/* ════════════════════════════════════════════ */
 /*  CONTACT PAGE                                */
 /* ════════════════════════════════════════════ */
 .contact-page { padding: 0 0 80px; }
@@ -726,7 +854,7 @@ footer {
           </div>
           <p class="vc-cat">Technology</p>
           <h3 class="vc-title">App Development</h3>
-          <p class="vc-desc">Native iOS apps built without subscriptions or trackers. Korrvox, Mitivox, and more on the way.</p>
+          <p class="vc-desc">Native iOS apps built without subscriptions or trackers. Korrvox, Mitivox, Zyggly, and more on the way.</p>
           <div class="vc-arrow">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#8A8680" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5"/></svg>
           </div>
@@ -800,7 +928,7 @@ footer {
       <div class="footer-div"></div>
       <div class="footer-bottom">
         <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
-        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
       </div>
     </div>
   </footer>
@@ -892,6 +1020,41 @@ footer {
         </div>
       </div>
 
+      <!-- Zyggly -->
+      <div class="app-card" style="cursor:pointer;border-color:#e9d5ff;" onclick="go('zyggly')">
+        <div class="app-card-header">
+          <div class="app-icon" style="background:linear-gradient(135deg,#a78bfa,#7c3aed);display:flex;align-items:center;justify-content:center;">
+            <img src="assets/zygglyicon.png" alt="Zyggly App Icon" onerror="this.style.display='none';this.parentNode.querySelector('.zyggly-icon-fallback').style.display='block'"/>
+            <span class="zyggly-icon-fallback" style="display:none;font-size:32px;font-weight:800;color:rgba(255,255,255,0.92);letter-spacing:-0.04em;">Z</span>
+          </div>
+          <div class="app-header-text">
+            <span class="lbl">Toddler &amp; Preschool Play</span>
+            <h2>Zyggly</h2>
+            <div class="app-badges">
+              <span class="app-badge"><span class="app-badge-dot" style="background:#a855f7"></span>iPhone &amp; iPad</span>
+              <span class="app-badge">Ages 1–5</span>
+              <span class="app-badge">One-time purchase</span>
+            </div>
+          </div>
+        </div>
+        <p class="app-tagline">Safe play. Pure joy. Zero worry.</p>
+        <p class="app-desc">A screen-time toy built for tiny hands. Zyggly turns the entire screen into a colorful interactive playground — shapes, letters, numbers, and mini-games — with no ads, no in-app purchases, and a parental app lock designed to keep children within the app.</p>
+        <div class="app-feats">
+          <span class="app-feat">5 Built-In Games</span>
+          <span class="app-feat">Parent PIN Gate</span>
+          <span class="app-feat">No Ads or IAP</span>
+          <span class="app-feat">COPPA Compliant</span>
+          <span class="app-feat">Guided Access Compatible</span>
+          <span class="app-feat">Zero Data Collection</span>
+        </div>
+        <div class="app-links">
+          <button class="btn" style="background:#7c3aed;" onclick="event.stopPropagation();go('zyggly')">
+            Learn More About Zyggly
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6h7M6 2.5L9.5 6 6 9.5"/></svg>
+          </button>
+        </div>
+      </div>
+
       <!-- Coming Soon -->
       <div class="apps-coming">
         <h3>More Apps on the Way</h3>
@@ -917,7 +1080,179 @@ footer {
       <div class="footer-div"></div>
       <div class="footer-bottom">
         <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
-        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  ZYGGLY                                    -->
+<!-- ══════════════════════════════════════════ -->
+<div id="p-zyggly" class="page">
+
+  <div class="pghd">
+    <div class="wrap">
+      <button class="pghd-back" onclick="go('apps')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 7h-9M6 3.5L2.5 7 6 10.5"/></svg>
+        Back to Apps
+      </button>
+      <span class="lbl">Toddler &amp; Preschool Play</span>
+      <h1>Zyggly</h1>
+      <p>The screen toy built for tiny hands. Safe play, pure joy, zero worry.</p>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="zyggly-hero">
+    <div class="wrap">
+      <div class="zyggly-hero-inner">
+        <div class="zyggly-hero-text">
+          <div class="zyggly-app-icon">
+            <img src="assets/zygglyicon.png" alt="Zyggly App Icon" onerror="this.style.display='none';this.parentNode.querySelector('.zyggly-app-icon-placeholder').style.display='block'"/>
+            <span class="zyggly-app-icon-placeholder" style="display:none;">Z</span>
+          </div>
+          <p class="zyggly-tagline">Safe play.<br>Pure joy.<br>Zero worry.</p>
+          <div class="zyggly-badges">
+            <span class="zyggly-badge zyggly-badge-purple">iPhone &amp; iPad</span>
+            <span class="zyggly-badge zyggly-badge-orange">Ages 1–5</span>
+            <span class="zyggly-badge zyggly-badge-blue">One-time purchase</span>
+            <span class="zyggly-badge zyggly-badge-green">COPPA Compliant</span>
+          </div>
+          <p>Zyggly turns the entire screen into an interactive playground of colorful shapes, letters, numbers, and mini-games. Every tap, swipe, pinch, and drag triggers something satisfying. Parents pick the experience, hand the device over, and let the kids play freely — with a parental app lock to prevent navigation away from the app, no ads, and no purchases lurking anywhere.</p>
+        </div>
+        <div class="zyggly-visual">
+          <div class="zyggly-shapes">
+            <div class="zyggly-shape" style="background:#fde68a;color:#92400e;">A</div>
+            <div class="zyggly-shape" style="background:#bbf7d0;color:#166534;">3</div>
+            <div class="zyggly-shape" style="background:#e9d5ff;color:#7c3aed;">★</div>
+            <div class="zyggly-shape" style="background:#fed7aa;color:#9a3412;">B</div>
+            <div class="zyggly-shape" style="background:#bfdbfe;color:#1e40af;">7</div>
+            <div class="zyggly-shape" style="background:#fecdd3;color:#9f1239;">♦</div>
+          </div>
+          <p class="zyggly-visual-label">Built for tiny hands</p>
+          <p class="zyggly-visual-sub">Every gesture does something colorful &amp; fun</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 Games -->
+  <section class="zyggly-games">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="lbl">What's Inside</span>
+        <h2>5 Built-In Games</h2>
+        <p>Each game is designed to engage curious toddlers with age-appropriate play — and keep parents worry-free.</p>
+      </div>
+      <div class="zyggly-games-grid">
+        <div class="zyggly-game-card" style="background:#f5f0ff;border-color:#e9d5ff;">
+          <span class="zyggly-game-icon">🎮</span>
+          <h4>Fidget Playground</h4>
+          <p>A free-play sandbox where every tap, drag, and swipe creates bursts of color and motion. No rules — just pure sensory delight.</p>
+        </div>
+        <div class="zyggly-game-card" style="background:#fff7ed;border-color:#fed7aa;">
+          <span class="zyggly-game-icon">🫧</span>
+          <h4>Bubble Pop</h4>
+          <p>Colorful bubbles drift across the screen. Tap to pop them and watch them explode into sparkles. Irresistible for little fingers.</p>
+        </div>
+        <div class="zyggly-game-card" style="background:#eff6ff;border-color:#bfdbfe;">
+          <span class="zyggly-game-icon">🔤</span>
+          <h4>Letter Lab</h4>
+          <p>Big, bold letters fill the screen with sounds and animations. Introduces the alphabet in a playful, pressure-free way.</p>
+        </div>
+        <div class="zyggly-game-card" style="background:#f0fdf4;border-color:#bbf7d0;">
+          <span class="zyggly-game-icon">🔢</span>
+          <h4>Math Pop</h4>
+          <p>Numbers float up and pop on command. A gentle, visual introduction to counting and number recognition for ages 2 and up.</p>
+        </div>
+        <div class="zyggly-game-card" style="background:#fdf4ff;border-color:#f0abfc;">
+          <span class="zyggly-game-icon">🔷</span>
+          <h4>Shape Math</h4>
+          <p>Circles, squares, stars, and triangles bounce and spin. Helps toddlers learn shapes through color, motion, and touch.</p>
+        </div>
+        <div class="zyggly-game-card" style="background:#fefce8;border-color:#fde68a;">
+          <span class="zyggly-game-icon">✨</span>
+          <h4>Every Gesture Counts</h4>
+          <p>Tap, swipe, pinch, drag — every interaction triggers a satisfying visual effect. Designed so the whole screen feels alive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parent Trust -->
+  <section class="zyggly-trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="lbl">Built for Parents Too</span>
+        <h2>Give Them the Screen. Keep the Peace.</h2>
+        <p>Every design decision in Zyggly was made with parents in mind — so you can hand over the device without a second thought.</p>
+      </div>
+      <div class="zyggly-trust-grid">
+        <div class="zyggly-trust-item">
+          <span class="zyggly-trust-icon">🔒</span>
+          <h4>Parent PIN Gate</h4>
+          <p>A parental PIN locks settings and restricts navigation away from the app, so children stay in the experience you chose for them.</p>
+        </div>
+        <div class="zyggly-trust-item">
+          <span class="zyggly-trust-icon">🚫</span>
+          <h4>No Ads. No IAP. Ever.</h4>
+          <p>One-time purchase, full stop. There's nothing to accidentally tap, buy, or watch inside Zyggly.</p>
+        </div>
+        <div class="zyggly-trust-item">
+          <span class="zyggly-trust-icon">📵</span>
+          <h4>Works Offline</h4>
+          <p>No internet connection required. All five games work anywhere — no Wi-Fi, no cellular, no worries.</p>
+        </div>
+        <div class="zyggly-trust-item">
+          <span class="zyggly-trust-icon">🛡️</span>
+          <h4>COPPA Compliant</h4>
+          <p>Zero data collection — full stop. Zyggly never tracks, stores, or transmits anything about your child.</p>
+        </div>
+      </div>
+      <div style="margin-top:20px;display:grid;grid-template-columns:1fr;gap:14px;">
+        <div class="zyggly-trust-item" style="display:flex;align-items:center;gap:16px;text-align:left;">
+          <span style="font-size:28px;flex-shrink:0;">📲</span>
+          <div>
+            <h4 style="font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px;">Guided Access Compatible</h4>
+            <p style="font-size:12px;color:var(--t3);line-height:1.7;">Use iOS Guided Access for total device lockdown — Zyggly is fully compatible, giving parents an extra layer of control when they need it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="zyggly-cta">
+    <div class="wrap">
+      <div class="zyggly-cta-box">
+        <h3>Ready to hand over the screen?</h3>
+        <p>Zyggly is coming soon to the App Store. One-time purchase. No subscriptions. Built for ages 1–5 on iPhone and iPad.</p>
+        <button class="btn btn-white" onclick="go('contact')">
+          Get Notified at Launch
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6h7M6 2.5L9.5 6 6 9.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-in">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo"><span class="footer-logo-mark">7K</span> Seven Kilo Enterprises LLC</div>
+          <p class="footer-sub">sevenkilo.com</p>
+        </div>
+        <nav class="footer-nav">
+          <a onclick="go('home')">Home</a><a onclick="go('apps')">Apps</a>
+          <a onclick="go('clothing')">Clothing</a><a onclick="go('property')">Property</a>
+          <a onclick="go('about')">About</a><a onclick="go('contact')">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-div"></div>
+      <div class="footer-bottom">
+        <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
       </div>
     </div>
   </footer>
@@ -1040,7 +1375,7 @@ footer {
       <div class="footer-div"></div>
       <div class="footer-bottom">
         <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
-        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
       </div>
     </div>
   </footer>
@@ -1189,7 +1524,7 @@ footer {
       <div class="footer-div"></div>
       <div class="footer-bottom">
         <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
-        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
       </div>
     </div>
   </footer>
@@ -1241,7 +1576,7 @@ footer {
           <div class="about-venture-item" style="cursor:pointer" onclick="go('apps')">
             <p class="vc-cat">Technology</p>
             <h4>App Development</h4>
-            <p>Native iOS apps — Korrvox and Mitivox — built without subscriptions, trackers, or third-party SDKs.</p>
+            <p>Native iOS apps — Korrvox, Mitivox, and Zyggly — built without subscriptions, trackers, or third-party SDKs.</p>
           </div>
           <div class="about-venture-item" style="cursor:pointer" onclick="go('clothing')">
             <p class="vc-cat">Apparel</p>
@@ -1321,7 +1656,7 @@ footer {
       <div class="footer-div"></div>
       <div class="footer-bottom">
         <p>© 2026 Seven Kilo Enterprises LLC. All rights reserved.</p>
-        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
+        <p>Korrvox &nbsp;·&nbsp; Mitivox &nbsp;·&nbsp; Zyggly &nbsp;·&nbsp; Sainted Streets Clothing &nbsp;·&nbsp; 7K Global Consulting</p>
       </div>
     </div>
   </footer>
@@ -1386,7 +1721,7 @@ footer {
 </div>
 
 <script>
-var PAGES = ['home','apps','clothing','property','about','contact'];
+var PAGES = ['home','apps','zyggly','clothing','property','about','contact'];
 
 // Hide nav on scroll down, show on scroll up
 (function() {
