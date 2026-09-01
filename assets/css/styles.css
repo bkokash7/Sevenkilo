@@ -213,8 +213,8 @@ p:last-child{margin-bottom:0}
 
 /* ---------- footer ---------- */
 .ft{background:var(--navy-deep);color:rgba(255,255,255,.62);padding:clamp(40px,6vw,60px) 0 34px;font-size:.85rem}
-.fti{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(24px,5vw,54px)}
-@media(max-width:760px){.fti{grid-template-columns:1fr 1fr}}
+.fti{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,5vw,54px)}
+@media(max-width:640px){.fti{grid-template-columns:1fr}}
 .ft h4{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:13px;font-weight:500}
 .ft a{color:rgba(255,255,255,.68);text-decoration:none;display:block;padding:4px 0}
 .ft a:hover{color:#fff}
