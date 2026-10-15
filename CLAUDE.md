@@ -40,10 +40,10 @@ Korrvox and Mitivox have separate domains (`korrvox.com`, `mitivox.com`) and app
 --tech-2:    #151922   app card hover
 --tech-line: #242A36   borders inside tech skin
 --tech-dim:  #8C93A3   body text inside tech skin
---gold:      #8A6228   consulting eyebrow and numbering
+--gold:      #8A6228   unused (legacy consulting skin)
 
 --street:    #0A0A0A   clothing dark skin
---charcoal:  #1A1A1A   consulting page header
+--charcoal:  #1A1A1A   unused (legacy consulting skin)
 
 App status colors: #5FCF8E (live), #8C93A3 (in development)
 Tech links: #7FB0D8
@@ -54,7 +54,7 @@ Tech links: #7FB0D8
 - **Body:** IBM Plex Sans 400/500/600 — loaded from Google Fonts
 - **Headings (h1–h4):** Space Grotesk 600, `letter-spacing: -.02em`, `line-height: 1.12`
 - **Mono accents** (eyebrow `.ey`, buttons, numbered labels, footer h4): IBM Plex Mono 400/500
-- **Consulting division only:** Playfair Display 700 replaces Space Grotesk for all h1–h3
+- **Consulting division** uses the shell palette and type (navy header, rust accents, Space Grotesk) to match the homepage and 7kglobalconsulting.com. No Playfair or gold.
 
 Font size base: `16px`. Body line-height: `1.65`.
 
@@ -93,7 +93,7 @@ Font size base: `16px`. Body line-height: `1.65`.
 
 **Interior page header** (`.ph` not `.mast`): wrap in `<section class="ph">`, add `.crumb` breadcrumb, `.ey` eyebrow, `h1`, optional `.lede`.
 
-**Division skin classes** on `<main>`: `tech` (apps), `cons` (consulting), `street` (clothing). Property and legal pages have no `<main>` class.
+**Division skin classes** on `<main>`: `tech` (apps), `cons` (consulting, no visual overrides), `street` (clothing). Property and legal pages have no `<main>` class.
 
 **Footer** is identical on every page. Copy it as-is and update relative paths. Ends with `<script src="../assets/js/site.js"></script>` — the only JS on the site (mobile drawer toggle).
 

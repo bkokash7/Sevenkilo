@@ -191,13 +191,11 @@ p:last-child{margin-bottom:0}
 @media(max-width:620px){.cats{grid-template-columns:1fr}}
 
 /* ================= CONSULTING ================= */
-.cons{background:#fff;color:var(--charcoal)}
-.cons .ph{background:var(--charcoal)}
-.cons .ey{color:var(--gold)}
-.cons h1,.cons h2,.cons h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;letter-spacing:-.005em}
+/* Uses the shell palette and type (navy, rust, paper, Space Grotesk),
+   matching the homepage and 7kglobalconsulting.com. */
 .prac{border-top:1px solid var(--rule)}
 .pr{display:grid;grid-template-columns:52px 1fr;gap:clamp(16px,3vw,32px);padding:30px 0;border-bottom:1px solid var(--rule)}
-.pr-n{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--gold);padding-top:7px}
+.pr-n{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--rust);padding-top:7px}
 .pr h3{font-size:1.22rem;margin-bottom:7px}
 .pr p{color:var(--ink-2);font-size:.93rem;max-width:62ch;margin:0}
 
