@@ -8,7 +8,9 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | URL | File | Notes |
 |-----|------|-------|
 | `/` | `index.html` | Homepage, links to four divisions |
-| `/apps/` | `apps/index.html` | App grid, six apps |
+| `/apps/` | `apps/index.html` | App grid, seven apps |
+| `/packlist/` | `packlist/index.html` | 7K PackList detail + inline privacy + terms |
+| `/b/*` | (not in this repo) | 7K PackList QR label page and API, a separate Cloudflare Worker (`packlist-labels`, source in the PackList7K repo `labels-worker/`). Never add files under `/b/` here. |
 | `/7kilofm/` | `7kilofm/index.html` | Detail + inline privacy + terms |
 | `/7kiloworkout/` | `7kiloworkout/index.html` | Detail + inline privacy + terms |
 | `/dyograf/` | `dyograf/index.html` | Detail + inline privacy + terms |

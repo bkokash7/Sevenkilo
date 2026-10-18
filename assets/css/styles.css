@@ -129,7 +129,8 @@ p:last-child{margin-bottom:0}
 .tech p{color:var(--tech-dim)}
 .tech .ph,.tech .mast{background:var(--tech)}
 
-.appgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:1px;background:var(--tech-line);border:1px solid var(--tech-line)}
+.appgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:1px;background:var(--tech);border:1px solid var(--tech-line)}
+.appgrid>*{box-shadow:0 0 0 1px var(--tech-line)}
 .app{
   position:relative;
   background:var(--tech);padding:30px 26px;text-decoration:none;color:inherit;
