@@ -20,6 +20,7 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | `/property/` | `property/index.html` | No external site, contact by email |
 | `/privacy/` | `privacy/index.html` | Site-level notice; links to app `#privacy` anchors |
 | `/terms/` | `terms/index.html` | Site-level terms |
+| `/cricket/` | `cricket/index.html` | Upcoming men's international cricket fixtures. Standalone page, not in nav. Fixture list is hand-maintained (generated list, page-scoped `<style>`); a small inline script fades played matches by date. Update the fixtures by hand as the season moves on. |
 
 Korrvox and Mitivox have separate domains (`korrvox.com`, `mitivox.com`) and appear as external links in the apps grid only — no detail pages here.
 
