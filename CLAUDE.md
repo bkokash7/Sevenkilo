@@ -1,7 +1,7 @@
 # sevenkilo.com — CLAUDE.md
 
 ## Deployment
-Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME` (value: `sevenkilo.com`). Deployed from `main` to Cloudflare Pages. No `_redirects`, `_headers`, or `wrangler.toml` exist.
+Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME` (value: `sevenkilo.com`). Deployed from `main` to Cloudflare Pages. `_redirects` holds the /packlist/ redirect. No `_headers` or `wrangler.toml` exist.
 
 ## Page inventory
 
@@ -9,7 +9,7 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 |-----|------|-------|
 | `/` | `index.html` | Homepage, links to four divisions |
 | `/apps/` | `apps/index.html` | App grid, seven apps |
-| `/packlist/` | `packlist/index.html` | 7K PackList detail + inline privacy + terms |
+| `/packlist/` | (none) | 301 redirect to https://www.7kpacklist.com via `_redirects`. The page was removed when PackList got its own site. Do not recreate it. |
 | `/b/*` | (not in this repo) | 7K PackList QR label page and API, a separate Cloudflare Worker (`packlist-labels`, source in the PackList7K repo `labels-worker/`). Never add files under `/b/` here. |
 | `/7kilofm/` | `7kilofm/index.html` | Detail + inline privacy + terms |
 | `/7kiloworkout/` | `7kiloworkout/index.html` | Detail + inline privacy + terms |
@@ -21,7 +21,7 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | `/privacy/` | `privacy/index.html` | Site-level notice; links to app `#privacy` anchors |
 | `/terms/` | `terms/index.html` | Site-level terms |
 
-Korrvox and Mitivox have separate domains (`korrvox.com`, `mitivox.com`) and appear as external links in the apps grid only — no detail pages here.
+Korrvox, Mitivox, and 7K PackList have separate domains (`korrvox.com`, `mitivox.com`, `7kpacklist.com`) and appear as external links in the apps grid only — no detail pages here.
 
 `index.html` contains a one-line script that redirects `#zyggly-privacy` to `zyggly/#privacy` for legacy App Store listing links. Do not remove it.
 
