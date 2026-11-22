@@ -13,7 +13,9 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | `/b/*` | (not in this repo) | 7K PackList QR label page and API, a separate Cloudflare Worker (`packlist-labels`, source in the PackList7K repo `labels-worker/`). Never add files under `/b/` here. |
 | `/7kilofm/` | `7kilofm/index.html` | Detail + inline privacy + terms |
 | `/7kiloworkout/` | `7kiloworkout/index.html` | Detail + inline privacy + terms |
-| `/dyograf/` | `dyograf/index.html` | Detail + inline privacy + terms |
+| `/dyograf/` | `dyograf/index.html` | Detail page; legal block links to the two pages below |
+| `/dyograf/privacy/` | `dyograf/privacy/index.html` | Dyograf Privacy Policy, text copied word for word from the app's PrivacyPolicyView.swift. Do not edit wording here; change the app source and recopy |
+| `/dyograf/terms/` | `dyograf/terms/index.html` | Dyograf Terms of Use, copied word for word from TermsOfUseView.swift. Same rule |
 | `/zyggly/` | `zyggly/index.html` | Detail + inline privacy + terms |
 | `/consulting/` | `consulting/index.html` | Links out to 7kglobalconsulting.com |
 | `/clothing/` | `clothing/index.html` | Links out to saintedstreetsclothing.com |
@@ -97,7 +99,7 @@ Font size base: `16px`. Body line-height: `1.65`.
 
 **Division skin classes** on `<main>`: `tech` (apps), `cons` (consulting, no visual overrides), `street` (clothing). Property and legal pages have no `<main>` class.
 
-**Footer** is identical on every page. Copy it as-is and update relative paths. Ends with `<script src="../assets/js/site.js"></script>` — the only JS on the site (mobile drawer toggle).
+**Footer** is identical on every page (includes Dyograf Privacy and Dyograf Terms links). Copy it as-is and update relative paths. Ends with `<script src="../assets/js/site.js"></script>` — the only JS on the site (mobile drawer toggle).
 
 **Font `<link>` tags** must be included on every page. The full Google Fonts URL loads Space Grotesk, IBM Plex Sans, IBM Plex Mono, and Playfair Display in one request.
 
@@ -106,7 +108,6 @@ Font size base: `16px`. Body line-height: `1.65`.
 - `consulting/index.html` section overrides `.sec-paper` with an inline `style="background:#fff"` — the CSS variable for that section is `var(--paper)` (#FAF8F4), not pure white. The inline style wins.
 - The `.scope` block in `property/index.html` has `border-left: 3px solid var(--rust)` — the one card-with-colored-left-border on the site, present in existing code.
 - Korrvox and Mitivox show `.st-soon` status color but display their domain names as the label rather than "In development" or "On the App Store" — inconsistent with the other four cards.
-- `dyograf/` terms state Dyograf is a one-time purchase, but the app is marked "In development" (no App Store link yet). These will need to be reconciled at launch.
 - No favicon is declared on any page.
 
 ---
