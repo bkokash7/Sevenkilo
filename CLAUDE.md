@@ -20,7 +20,7 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | `/consulting/` | `consulting/index.html` | Links out to 7kglobalconsulting.com |
 | `/clothing/` | `clothing/index.html` | Links out to saintedstreets.com (custom store; replaced the old Wix store at saintedstreetsclothing.com in Nov 2026) |
 | `/property/` | `property/index.html` | No external site, contact by email |
-| `/books/` | `books/index.html` | Publishing division. Seven Kilo Press (an imprint of the LLC, not a registered trade name). Covers in `assets/img/books/` link to book pages on sevenkilopress.com |
+| `/books/` | `books/index.html` | Publishing division. Seven Kilo Press (an imprint of the LLC, not a registered trade name). Grid of all books (cover, title, one-line description); covers in `assets/img/books/` (300px wide) link to each book page on sevenkilopress.com, never straight to Amazon. Add new books here when they are added to sevenkilopress.com |
 | `/privacy/` | `privacy/index.html` | Site-level notice; links to app `#privacy` anchors |
 | `/terms/` | `terms/index.html` | Site-level terms |
 
@@ -105,6 +105,9 @@ Font size base: `16px`. Body line-height: `1.65`.
 **Footer** is identical on every page (includes Dyograf Privacy and Dyograf Terms links). Copy it as-is and update relative paths. Ends with `<script src="../assets/js/site.js"></script>` — the only JS on the site (mobile drawer toggle).
 
 **Font `<link>` tags** must be included on every page. The full Google Fonts URL loads Space Grotesk, IBM Plex Sans, IBM Plex Mono, and Playfair Display in one request.
+
+## Stylesheet version tag
+Every page links `assets/css/styles.css?v=YYYYMMDD`. When styles.css changes, bump that date on every page so browsers load the new file instead of an old saved copy.
 
 ## Known issues
 

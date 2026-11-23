@@ -242,11 +242,15 @@ p:last-child{margin-bottom:0}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 /* Publishing (books/) */
-.press-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(28px,5vw,64px);align-items:center}
-.press-row h2{font-size:clamp(1.35rem,3vw,1.85rem);margin:6px 0 12px}
-.press-row p{color:var(--ink-2);font-size:.95rem;max-width:46ch;margin:0}
-.press-covers{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
-.press-covers a{display:block;width:clamp(96px,14vw,132px);transition:transform .18s}
-.press-covers a:hover{transform:translateY(-4px)}
-.press-covers img{display:block;width:100%;height:auto;box-shadow:0 6px 16px rgba(11,27,46,.18)}
-@media (max-width:880px){.press-row{grid-template-columns:1fr}}
+.bk-h{font-size:clamp(1.35rem,3vw,1.85rem);margin:6px 0 28px}
+.bkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.bk{background:var(--paper);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:24px 22px 22px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;transition:background .18s}
+.sec-alt .bk{background:var(--paper-2)}
+.bk:hover{background:#fff}
+.bk img{width:120px;height:auto;display:block;margin-bottom:16px;box-shadow:0 4px 12px rgba(11,27,46,.18)}
+.bk-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;line-height:1.25;color:var(--navy)}
+.bk-meta{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.bk p{font-size:.86rem;line-height:1.55;color:var(--ink-2);margin:10px 0 14px;flex:1}
+.bk-go{font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.bk:hover .bk-go{color:var(--rust)}
+@media(max-width:620px){.bkgrid{grid-template-columns:1fr 1fr}.bk{padding:18px 14px}.bk img{width:100%;max-width:120px}}
