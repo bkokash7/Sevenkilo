@@ -7,7 +7,7 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 
 | URL | File | Notes |
 |-----|------|-------|
-| `/` | `index.html` | Homepage, links to four divisions |
+| `/` | `index.html` | Homepage, links to five divisions |
 | `/apps/` | `apps/index.html` | App grid, seven apps |
 | `/packlist/` | (none) | 301 redirect to https://www.7kpacklist.com via `_redirects`. The page was removed when PackList got its own site. Do not recreate it. |
 | `/b/*` | (not in this repo) | 7K PackList QR label page and API, a separate Cloudflare Worker (`packlist-labels`, source in the PackList7K repo `labels-worker/`). Never add files under `/b/` here. |
@@ -18,8 +18,9 @@ Pure static HTML/CSS/JS. No build step, no bundler, no config file beyond `CNAME
 | `/dyograf/terms/` | `dyograf/terms/index.html` | Dyograf Terms of Use, copied word for word from TermsOfUseView.swift. Same rule |
 | `/zyggly/` | `zyggly/index.html` | Detail + inline privacy + terms |
 | `/consulting/` | `consulting/index.html` | Links out to 7kglobalconsulting.com |
-| `/clothing/` | `clothing/index.html` | Links out to saintedstreetsclothing.com |
+| `/clothing/` | `clothing/index.html` | Links out to saintedstreets.com (custom store; replaced the old Wix store at saintedstreetsclothing.com in Nov 2026) |
 | `/property/` | `property/index.html` | No external site, contact by email |
+| `/books/` | `books/index.html` | Publishing division. Seven Kilo Press (an imprint of the LLC, not a registered trade name). Covers in `assets/img/books/` link to book pages on sevenkilopress.com |
 | `/privacy/` | `privacy/index.html` | Site-level notice; links to app `#privacy` anchors |
 | `/terms/` | `terms/index.html` | Site-level terms |
 
@@ -85,6 +86,7 @@ Font size base: `16px`. Body line-height: `1.65`.
   <li><a href="../apps/" class="act">Software</a></li>
   <li><a href="../clothing/">Ecommerce</a></li>
   <li><a href="../property/">Maintenance</a></li>
+  <li><a href="../books/">Publishing</a></li>
 </ul>
 <button class="hbg" id="hbg" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div>
@@ -92,6 +94,7 @@ Font size base: `16px`. Body line-height: `1.65`.
 <div class="mdrawer" id="md">
   <a href="../consulting/">Consulting</a><a href="../apps/">Software</a>
   <a href="../clothing/">Ecommerce</a><a href="../property/">Maintenance</a>
+  <a href="../books/">Publishing</a>
 </div>
 ```
 

@@ -189,6 +189,8 @@ p:last-child{margin-bottom:0}
 .cats a:hover{background:#151515}
 .cats h3{font-size:1.1rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:7px}
 .cats p{color:#9A9A9A;font-size:.88rem;margin:0}
+.cats-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:880px){.cats-3{grid-template-columns:1fr}}
 @media(max-width:620px){.cats{grid-template-columns:1fr}}
 
 /* ================= CONSULTING ================= */
@@ -238,3 +240,13 @@ p:last-child{margin-bottom:0}
 .upd{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Publishing (books/) */
+.press-row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(28px,5vw,64px);align-items:center}
+.press-row h2{font-size:clamp(1.35rem,3vw,1.85rem);margin:6px 0 12px}
+.press-row p{color:var(--ink-2);font-size:.95rem;max-width:46ch;margin:0}
+.press-covers{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.press-covers a{display:block;width:clamp(96px,14vw,132px);transition:transform .18s}
+.press-covers a:hover{transform:translateY(-4px)}
+.press-covers img{display:block;width:100%;height:auto;box-shadow:0 6px 16px rgba(11,27,46,.18)}
+@media (max-width:880px){.press-row{grid-template-columns:1fr}}
